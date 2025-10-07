@@ -10,7 +10,7 @@ import { LogDirective } from '../log.directive';
   imports: [FormsModule],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.css',
-  hostDirectives:[LogDirective]
+  // hostDirectives:[LogDirective]
 })
 export class AuthComponent {
   email = signal('');
