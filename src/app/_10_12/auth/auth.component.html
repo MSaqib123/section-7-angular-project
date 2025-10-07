@@ -1,0 +1,25 @@
+<!-- ================= Class #4 ================= -->
+<!-- #region Class #4. Analyzing a Built-in Attribute Directive ngModel -->
+
+<!--
+  ngModel  ==   Built-in Attribute directive   haaa ya
+  ctrl+click on  ngModel    to go the  File view of  this    directive attribute
+-->
+<h2>Authenticate to access all resources</h2>
+<form (ngSubmit)="onSubmit()">
+  <p>
+    <label>E-Mail</label>
+    <input type="email" name="email" [(ngModel)]="email" />
+  </p>
+
+  <p>
+    <label>Password</label>
+    <input type="password" name="password" [(ngModel)]="password" />
+  </p>
+
+  <p>
+    <button>Login</button>
+  </p>
+</form>
+
+<!-- #endregion -->
