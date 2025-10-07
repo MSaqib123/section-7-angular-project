@@ -43,7 +43,7 @@
 <!-- #region _10_to_12 -->
 
 <!--  #region 10. Building Another Directive -->
-
+<!-- 
 <main>
   <app-learning-resources />
 
@@ -51,6 +51,23 @@
 
   <app-auth />
   <p appAuth="admin">Only Admin should see this</p>
+</main>
+ -->
+<!-- #endregion  -->
+
+
+<!--  #region 11. Building a Custom Structural Directive -->
+
+<main>
+  <app-learning-resources />
+
+  <hr />
+
+  <app-auth />
+
+  <ng-template appAuth="admin">
+    <p >Only Admin should see this</p>
+  </ng-template>
 </main>
 
 <!-- #endregion  -->
