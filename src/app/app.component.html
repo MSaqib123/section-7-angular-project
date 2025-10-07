@@ -1,7 +1,37 @@
+<!-- =================================================
+====================== _1_to_5 ==================
+================================================= -->
+<!-- #region _1_to_5 -->
+
+<!--  #region 5. Analyzing a Built-in Structural Directive ngIf -->
+
 <main>
   <app-learning-resources />
 
   <hr />
 
   <app-auth />
+  
+<!--
+  BuildIn structural Director     ==  (*) structrual  (* === ng-template attribute)
+  *ngIf 
+  *ngFor
+  ......
+-->
+
+<p *ngIf="isAdmin()">Only Admin should see this</p>
+
+<ul *ngIf="isAdmin()">
+  <h3>Employee List</h3>
+  <li *ngFor="let employee of employees; let i = index">
+    {{ i + 1 }}. {{ employee.name }} — {{ employee.role }}
+  </li>
+</ul>
+
 </main>
+
+
+<!--  #endregion -->
+
+<!-- #endregion  -->
+
