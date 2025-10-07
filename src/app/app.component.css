@@ -27,6 +27,10 @@ hr {
   background-color: #3a096a;
 }
 
+.unauthenticated {
+  background-color: red;
+}
+
 .admin {
   background-color: #1354be;
 }
