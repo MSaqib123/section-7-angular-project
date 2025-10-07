@@ -52,7 +52,49 @@
 //#endregion
 
 //#region  Class #8   8. Working with Inputs in Custom Directives
-import { Directive, input, isStandalone } from '@angular/core';
+// import { Directive, input, isStandalone } from '@angular/core';
+
+// @Directive({
+//   selector: 'a[appSafeLink]',
+//   standalone: true,
+//   host: {
+//     '(click)': 'onConfirmLeavePage($event)',
+//   },
+// })
+// export class SafeLinkDirective {
+//     // queryParam = input('myapp');
+//     queryParam = input('myapp',{alias:'appSafeLink'});
+
+//   constructor() {
+//     console.log('Safe Link Directive');
+//   }
+
+//   onConfirmLeavePage(event: MouseEvent) {
+//     const wantsToLeave = window.confirm('Do you want to leave the app');
+//     if (wantsToLeave) {
+//       //======= 1st way ========
+//       //   const address = (event.target as HTMLAnchorElement).href;
+//       //   (event.target as HTMLAnchorElement).href = address + "?from=myapp";
+
+//       //======= 1st way ========
+//         const address = (event.target as HTMLAnchorElement).href;
+//         (event.target as HTMLAnchorElement).href = address + "?from=" + this.queryParam();
+
+//       return;
+//     }
+//     event?.preventDefault();
+//   }
+// }
+//#endregion
+
+//#region  Class #9   9. Directives & Dependency Injection
+import {
+  Directive,
+  ElementRef,
+  inject,
+  input,
+  isStandalone,
+} from '@angular/core';
 
 @Directive({
   selector: 'a[appSafeLink]',
@@ -62,8 +104,8 @@ import { Directive, input, isStandalone } from '@angular/core';
   },
 })
 export class SafeLinkDirective {
-    // queryParam = input('myapp');
-    queryParam = input('myapp',{alias:'appSafeLink'});
+  queryParam = input('myapp', { alias: 'appSafeLink' });
+  private hostElementRef = inject<ElementRef<HTMLAnchorElement>>(ElementRef);
 
   constructor() {
     console.log('Safe Link Directive');
@@ -72,15 +114,12 @@ export class SafeLinkDirective {
   onConfirmLeavePage(event: MouseEvent) {
     const wantsToLeave = window.confirm('Do you want to leave the app');
     if (wantsToLeave) {
-      //======= 1st way ========
-      //   const address = (event.target as HTMLAnchorElement).href;
-      //   (event.target as HTMLAnchorElement).href = address + "?from=myapp";
-      
-      //======= 1st way ========
-        const address = (event.target as HTMLAnchorElement).href;
-        (event.target as HTMLAnchorElement).href = address + "?from=" + this.queryParam();
-
-      return;
+      const address = this.hostElementRef.nativeElement.href;
+      this.hostElementRef.nativeElement.href =
+        address + '?from=' + this.queryParam();
+      if (address && this.hostElementRef.nativeElement.href) {
+        window.open(this.hostElementRef.nativeElement.href, '_blank'); // 👈 Opens in a new tab
+      }
     }
     event?.preventDefault();
   }
