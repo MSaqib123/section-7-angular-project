@@ -75,16 +75,53 @@
 //=================================================
 //#region 
 
+// import { Component, computed, inject } from '@angular/core';
+// import { LearningResourcesComponent } from "./_10_12/learning-resources/learning-resources.component";
+// import { AuthComponent } from "./_10_12/auth/auth.component";
+// import { AuthService } from './_10_12/auth/auth.service';
+// import { NgFor, NgIf } from '@angular/common';
+// import { AuthDirective } from './_10_12/auth/auth.directive';
+
+// @Component({
+//   selector: 'app-root',
+//   imports: [ LearningResourcesComponent, AuthComponent, NgIf, NgFor,AuthDirective],
+//   templateUrl: './app.component.html',
+//   styleUrl: './app.component.css'
+// })
+// export class AppComponent {
+//   private authService = inject(AuthService);
+
+//   isAdmin = computed(()=> this.authService.activePermission() === 'admin');
+
+//   employees = [
+//     { name: 'Ali', role: 'Developer' },
+//     { name: 'Sara', role: 'Designer' },
+//     { name: 'Ahmed', role: 'Tester' },
+//     { name: 'Zara', role: 'Manager' }
+//   ];
+// }
+
+//#endregion
+
+
+
+
+//=================================================
+// ====================== _10_to_12 ==================
+//=================================================
+//#region 
+
 import { Component, computed, inject } from '@angular/core';
-import { LearningResourcesComponent } from "./_10_12/learning-resources/learning-resources.component";
-import { AuthComponent } from "./_10_12/auth/auth.component";
-import { AuthService } from './_10_12/auth/auth.service';
 import { NgFor, NgIf } from '@angular/common';
-import { AuthDirective } from './_10_12/auth/auth.directive';
+import { LearningResourcesComponent } from "./_13/learning-resources/learning-resources.component";
+import { AuthComponent } from "./_13/auth/auth.component";
+import { AuthService } from './_13/auth/auth.service';
+import { AuthDirective } from './_13/auth/auth.directive';
+import { LogDirective } from './_13/log.directive';
 
 @Component({
   selector: 'app-root',
-  imports: [ LearningResourcesComponent, AuthComponent, NgIf, NgFor,AuthDirective],
+  imports: [ LearningResourcesComponent, AuthComponent, NgIf, NgFor,AuthDirective,LogDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -102,5 +139,6 @@ export class AppComponent {
 }
 
 //#endregion
+
 
 
